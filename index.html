@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<!--
+	AUTHOR: HB
+	VERSION: 03.06.2015-2.0
+	CREATED: 12.18.2012
+	PURPOSE: NNSP Incident Input Form
+	TODO:
+-->
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title> * * NNSP Incident Form * * </title>
+		<link href="css/normalize.css" rel="stylesheet">
+		<link href="css/foundation.css" rel="stylesheet">
+	</head>
+	<body id='page'>
+	     <form id='form' name='form' method='POST'>
+	          <div id='masthead'>
+	               <h1>Incident form</h1>
+	               <p>Please complete everything</p>
+	          </div>
+	          <div id='mastHeadImage'>
+	               <img src='images/NationalSkiPatrol.jpg' alt='NSP Logo' id='nspLogo'>
+	          </div>
+	          <fieldset id='dateTime'>
+	               <legend>Date &amp; Time</legend>
+	               <label for='day'>Day</label>
+	               <input name='day' id='day' type='text' class='mediumInput'>
+	               <label for='date' >Date</label>
+	               <input name='date' id='date' type='text' class='mediumInput'>
+	               <label for='incidentTime'>Incident Time</label>
+	               <input name='incidentTime' id="incidentTime" type='time' autofocus required>
+	          </fieldset>
+	          <fieldset id='personalInfo'>
+	               <legend>Injured Person</legend>
+	               <label for='lastName'>Last Name</label>
+	               <input name='lastName' id='lastName' placeholder='Last Name' type='text' required>
+	               <label for='firstName'>First Name</label>
+	               <input name='firstName' id='firstName' placeholder='First Name' type='text' required>
+	               <label for="gender"></label><span class="marginRight" id="gender">
+	                    <label for='genderF'>Female</label><input name='gender' id='genderF' value='Female' type='radio' required>
+	                    <label for='genderM'>Male</label><input name='gender' id='genderM' value='Male' type='radio' required>
+	               </span>
+	               <br>
+	               <label for='dob'>DOB</label>
+	               <input name='dob' id='dob' type='date' min='1920-01-01' max='2030-01-10' required>
+	               <input id='age' name='age' type='hidden'>
+	               <label for='height'>Height</label>
+	               <input name='height' id='height' class='mediumInput' placeholder='Inches' type='number' required>
+	               <label for='weight'>Weight</label>
+	               <input name='weight' id='weight' class='mediumInput' placeholder='Weight' type='number' required>
+	               <br>
+	               <label for='patientStreet'>Street</label>
+	               <input name='patientStreet' id='patientStreet' placeholder='Street' type='text' class='largeInput' required>
+	               <input id='patientCity' name='patientCity' type='hidden'>
+	               <input id='patientState' name='patientState' type='hidden'>
+	               <label for='patientZip'>Zip Code</label>
+	               <input name='patientZip' id='patientZip' placeholder='Zip Code' type='text' class='mediumInput' required>
+	               <label for='email'>E-Mail Address</label>
+	               <input name='email' id='email' class='largeInput' type='email' placeholder='Email'>
+	               <br>
+	               <label for='occupation'>Occupation</label>
+	               <input name='occupation' id='occupation' placeholder='Occupation' type='text' class='largeInput' required>
+	               <label for='homePhoneNum'>Home Phone</label>
+	               <input name='homePhoneNum' id='homePhoneNum' placeholder='Home phone' type='tel'><!--pattern='[\(]\d{3}[\)]\d{3}[\-]\d{4}'-->
+	               <label for='cellPhoneNum'>Cell Phone</label>
+	               <input name='cellPhoneNum' id='cellPhoneNum' placeholder='Cell phone' type='tel'><!--pattern='[\(]\d{3}[\)]\d{3}[\-]\d{4}'-->
+	          </fieldset>
+	          <fieldset id='patientHistory'>
+	               <legend>Patient History</legend>
+	               <label for='priorInjury'>Prior Injury/Illness</label>
+	               <textarea name='priorInjury' id='priorInjury' placeholder='Describe prior injury/illness'></textarea>
+	               <label for='yearInjured'>Year</label>
+	               <input name='yearInjured' id='yearInjured' placeholder='injured/illness' type='number'>
+		          <label for='healthInsurance'>Health Insurance?</label><span class="marginRight" id='healthInsurance'>
+	                    <label for='hiYes'></label>Yes<input name='healthInsurance' id="hiYes" value='yes' type='radio' required>
+	                    <label for='hiNo'></label>No<input name='healthInsurance' id="hiNo" value='no' type='radio' required>
+	               </span>
+	               <br>
+	               <p>Corrective Lenses?</p>
+		          <label for='correctiveLensesY'>Yes</label><input name='correctiveLenses' id='correctiveLensesY' value='yes' type='radio' required>
+		          <label for='correctiveLensesN'>No</label><input name='correctiveLenses' id='correctiveLensesN' value='no' type='radio' required>
+	               <span id='lensesYes' class='inLine'></span>
+	               <label for='meds'>Medications</label>
+	               <textarea name='meds' placeholder='List any medications taken' required></textarea>
+	               <br>
+	               <label for='ticketType' class='marginLeft'>Ticket Type</label>
+	               <input name='ticketType' id='ticketType' placeholder='Ticket Type' type='text' required>
+	               <label for='group'>Group Name</label>
+	               <input name='group' placeholder='Group' type='text'>
+	               <label for='allergies'>Allergies</label>
+	               <textarea name='allergies' placeholder='Describe allergies/alerts' required></textarea>
+	          </fieldset>
+	          <fieldset id='locations'>
+	               <legend>Location</legend>
+	               <label for='location'>Incident Location</label>
+	               Lift<input name='location' id='location' value='lift' type='radio' required>
+	               On Hill<input name='location' id='location' value='onHill' type='radio' required>
+	               Premise<input name='location' id='location' value='premise' type='radio' required>
+	               <span id='hillLift'></span>
+	               <input id='hillName' name='hillName' type='hidden'>
+	               <input id='liftName' name='liftName' type='hidden'>
+	               <input id='difficulty' name='difficulty' type='hidden'>
+	               <br>
+	               <label for='specificLocation'>Specific Location</label>
+	               <textarea name='specificLocation' placeholder='Describe specific location' required></textarea>
+	          </fieldset>
+	          <fieldset id='history'>
+	               <legend>Skiing History</legend>
+	               <label for='ability'>Ability</label>
+	               Beginner<input name='ability' value='beginner' type='radio' required>
+	               Intermediate<input name='ability' value='intermediate' type='radio' required>
+	               Expert<input name='ability' value='expert' type='radio' required>
+	               Not Applicable<input name='ability' value='na' type='radio' required>
+	               <label for='inLesson' class='marginLeft'>In Lesson?</label>
+	               Yes<input name='inLesson' value='Yes' type='radio' required>
+	               No<input name='inLesson' value='No' type='radio' required>
+	               <span id='instYes' class='inLine'></span>
+	               <br>
+	               <label for='numTimes'>Number of times on?</label>
+	               Hill<input name='numTimes' value='hill' type='radio'>
+	               Lift<input name='numTimes' value='lift' type='radio'>
+	               Other<input name='numTimes' value='other' type='radio'>
+	               <span id='otherYes' class='inLine'></span>
+	               Today<input name='numTimesLoc' id='numTimesLoc' value='today' type='radio'>
+	               <input type='number' min='0' max='20' step='1' name='qtyTimesToday' class='smallInput'>
+	               Prior<input name='numTimesLoc' value='prior' type='radio'>
+	               <input name='qtyTimes' id='qtyTimes' class='smallInput' type='number' min='0' max='20' step='1'>
+	               <br>
+	               <label for='equipmentRemoval'>Equipment Removed By:</label>
+	               Fall<input name='equipmentRemoval' value='fall' type='radio' required>
+	               Injured<input name='equipmentRemoval' value='injured' type='radio' required>
+	               Ski Patrol<input name='equipmentRemoval' value='patrol' type='radio' required>
+	               Other<input name='equipmentRemoval' value='other' type='radio' required>
+	          </fieldset>
+	          <fieldset id='equipment'>
+	               <legend>Equipment</legend>
+	               <label for='equipmentType'>Type</label>
+	               Alpine<input type='radio' name='equipmentType' value='alpine' required>
+	               Nordic<input type='radio' name='equipmentType' value='nordic' required>
+	               Snowboard<input type='radio' name='equipmentType' value='snowboard' required>
+	               Other<input type='radio' name='equipmentType' value='other' required>
+	               <span id='otherEquipYes' class='inLine'></span>
+	               <br>
+	               <label for='owner'>Owner</label>
+	               Owned<input type='radio' name='owner' value='owned' required>
+	               Area Rental<input type='radio' name='owner' value='areaRental' required>
+	               Other Rental<input type='radio' name='owner' value='otherRental' required>
+	               Borrowed<input type='radio' name='owner' value='borrowed' required>
+	               Demo<input type='radio' name='owner' value='demo' required>
+	               <input type='hidden' id='shopCity' name='shopCity'>
+	               <input type='hidden' id='shopState' name='shopState'>
+	               <input type='hidden' id='nubsName' name='nubsName'>
+	               <input type='hidden' id='nubsStreet' name='nubsStreet'>
+	               <input type='hidden' id='nubsZip' name='nubsZip'>
+	               <br>
+	               <label for='bindingMake'>Bindings</label>
+	               <input name='bindingMake' type='text' placeholder='Binding Make'>
+	               <input name='bindingModel' type='text' placeholder='Binding Model'>
+	               <span id='rentalEquip'></span>
+	               <label for='helmet'>Helmet Worn?</label>
+	               Yes<input type='radio' name='helmet' id='helmet' value='yes' required>
+	               No<input type='radio' name='helmet' id='helmet' value='no' required>
+	               <span id='helmetYes' class='inLine'></span>
+	          </fieldset>
+	          <fieldset id='incidentDescription'>
+	               <legend>Incident Description</legend>
+	               <textarea id='incidentDescription' name='incidentDescription' placeholder='Describe the incident' required></textarea>
+	          </fieldset>
+	          <fieldset id='conditions'>
+	               <legend>Site Conditions</legend>
+	               <div class="left_column">
+	                    <ul class="ulNoStyle">
+	                         <li class="leftAligned"><label for='sceneSurface'>Surface at scene?</label></li>
+	                         <li class="rightAligned">Powder<input type='checkbox' name='sceneSurface' value='Powder'></li>
+	                         <li class="rightAligned">Packed powder<input type='checkbox' name='sceneSurface' value='Packed Powder'></li>
+	                         <li class="rightAligned">Hard packed<input type='checkbox' name='sceneSurface' value='Hard Packed'></li>
+	                         <li class="rightAligned">Variable<input type='checkbox' name='sceneSurface' value='Variable'></li>
+	                         <li class="rightAligned">Corn<input type='checkbox' name='sceneSurface' value='Corn'></li>
+	                         <li class="rightAligned">Granular<input type='checkbox' name='sceneSurface' value='Granular'></li>
+	                         <li class="rightAligned">Wet<input type='checkbox' name='sceneSurface' value='Wet'></li>
+	                         <li class="rightAligned">Other:<input type='checkbox' name='sceneSurface' value='other'>
+	                              <input name='sceneSurfaceOther' id='sceneSurfaceOther' type='text' placeholder='Other'>
+	                         </li>
+	                    </ul>
+	               </div>
+	               <div class="left_column">
+	                    <ul class="ulNoStyle">
+	                         <li class="leftAligned"><label for='visibility'>Visibility?</label></li>
+	                         <li class="rightAligned">Clear<input type='checkbox' name='visibility' value='Clear'></li>
+	                         <li class="rightAligned">Overcast<input type='checkbox' name='visibility' value='Overcast'></li>
+	                         <li class="rightAligned">Fog<input type='checkbox' name='visibility' value='Fog'></li>
+	                         <li class="rightAligned">Snowing<input type='checkbox' name='visibility' value='Snowing'></li>
+	                         <li class="rightAligned">Raining<input type='checkbox' name='visibility' value='Raining'></li>
+	                         <li class="rightAligned">Snowmaking near scene<input type='checkbox' name='visibility' value='Snowmaking near scene'></li>
+	                    </ul>
+	               </div>
+	               <div class="left_column">
+	                    <ul class="ulNoStyle">
+	                         <li class="leftAligned"><label for='temperature'>Temperature?</label></li>
+	                         <li class="rightAligned">Below 0<input type='radio' name='temperature' id='temperature' value='Below Zero'></li>
+	                         <li class="rightAligned">0 - 32<input type='radio' name='temperature' id='temperature' value='0 - 32'></li>
+	                         <li class="rightAligned">Above 32<input type='radio' name='temperature' id='temperature' value='Above 32'></li>
+	                    </ul>
+	               </div>
+	               <div class="left_column">
+	                    <ul class="ulNoStyle">
+	                         <li class="leftAligned"><label for='wind' class='marginLeft'>Wind?</label></li>
+	                         <li class="rightAligned">Calm<input type='radio' name='wind' id='wind' value='Calm'></li>
+	                         <li class="rightAligned">Moderate<input type='radio' name='wind' id='wind' value='Moderate'></li>
+	                         <li class="rightAligned">High<input type='radio' name='wind' id='wind' value='High'></li>
+	                    </ul>
+	               </div>
+	          </fieldset>
+	          <fieldset id='injury'>
+	               <legend>Probable Injury</legend>
+	               <div class="left_column">
+	                    <ul class="ulNoStyle">
+	                         <li class="rightAligned">Fracture<input type='checkbox' name='injury' value='fracture'></li>
+	                         <li class="rightAligned">Puncture/Laceration<input type='checkbox' name='injury' value='puncture'></li>
+	                         <li class="rightAligned">Abrasion<input type='checkbox' name='injury' value='abrasion'></li>
+	                         <li class="rightAligned">Dislocation<input type='checkbox' name='injury' value='dislocation'></li>
+	                         <li class="rightAligned">Sprain/Strain<input type='checkbox' name='injury' value='sprain'></li>
+	                    </ul>
+	               </div>
+	               <div class="left_column">
+	                    <ul class="ulNoStyle">
+	                         <li class="rightAligned">Bruise/Contusion<input type='checkbox' name='injury' value='bruise'></li>
+	                         <li class="rightAligned">Concussion<input type='checkbox' name='injury' value='concussion'></li>
+	                         <li class="rightAligned">Frostbite<input type='checkbox' name='injury' value='frostbite'></li>
+	                         <li class="rightAligned">Burn<input type='checkbox' name='injury' value='burn'></li>
+	                         <li class="rightAligned">Torn Ligament/Tendon<input type='checkbox' name='injury' value='ligament'></li>
+	                    </ul>
+	               </div>
+	               <div class="left_column">
+	                    <ul class="ulNoStyle">
+	                         <li class="rightAligned">
+	                              Other:<input type='checkbox' name='injury' value='other'>
+	                              <input name='injuryOther' type='text' placeholder='Other'>
+	                         </li>
+	                    </ul>
+	               </div>
+	          </fieldset>
+	          <fieldset id='injuryZone'>
+	               <legend>Injury Zone</legend>
+	               <div class="left_column">
+	                    <ul class="ulNoStyle">
+	                         <li class="rightAligned">Left<input type='checkbox' name='injuryLoc' value='left'></li>
+	                         <li class="rightAligned">Right<input type='checkbox' name='injuryLoc' value='right'></li>
+	                         <li class="rightAligned">Both Left/Right<input type='checkbox' name='injuryLoc' value='Both Left/Right'></li>
+	                         <li class="rightAligned">Posterior<input type='checkbox' name='injuryLoc' value='Posterior'></li>
+	                         <li class="rightAligned">Anterior<input type='checkbox' name='injuryLoc' value='Anterior'></li>
+	                         <li class="rightAligned">Both Posterior/Anterior<input type='checkbox' name='injuryLoc' value='Both Posterior/Anterior'></li>
+	                         <li class="rightAligned">Multiple<input type='checkbox' name='injuryLoc' value='Multiple'></li>
+	                    </ul>
+	               </div>
+	               <div class="left_column">
+	                    <ul class="ulNoStyle">
+	                         <li class="rightAligned">Upper Leg<input type='checkbox' name='injuryLoc' value='Upper Leg'></li>
+	                         <li class="rightAligned">Lower Leg<input type='checkbox' name='injuryLoc' value='Lower Leg'></li>
+	                         <li class="rightAligned">Knee<input type='checkbox' name='injuryLoc' value='Knee'></li>
+	                         <li class="rightAligned">Ankle<input type='checkbox' name='injuryLoc' value='Ankle'></li>
+	                         <li class="rightAligned">Foot<input type='checkbox' name='injuryLoc' value='Foot'></li>
+	                         <li class="rightAligned">Hip<input type='checkbox' name='injuryLoc' value='Hip'></li>
+	                    </ul>
+	               </div>
+	               <div class="left_column">
+	                    <ul class="ulNoStyle">
+	                         <li class="rightAligned">Abdomen<input type='checkbox' name='injuryLoc' value='Abdomen'></li>
+	                         <li class="rightAligned">Chest<input type='checkbox' name='injuryLoc' value='Chest'></li>
+	                         <li class="rightAligned">Back<input type='checkbox' name='injuryLoc' value='Back'></li>
+	                         <li class="rightAligned">Neck<input type='checkbox' name='injuryLoc' value='Neck'></li>
+	                    </ul>
+	               </div>
+	               <div class="left_column">
+	                    <ul class="ulNoStyle">
+	                         <li class="rightAligned">Shoulder<input type='checkbox' name='injuryLoc' value='Shoulder'></li>
+	                         <li class="rightAligned">Arm<input type='checkbox' name='injuryLoc' value='Arm'></li>
+	                         <li class="rightAligned">Wrist<input type='checkbox' name='injuryLoc' value='Wrist'></li>
+	                         <li class="rightAligned">Hand<input type='checkbox' name='injuryLoc' value='Hand'></li>
+	                         <li class="rightAligned">Thumb<input type='checkbox' name='injuryLoc' value='Thumb'></li>
+	                    </ul>
+	               </div>
+	               <div class="left_column">
+	                    <ul class="ulNoStyle">
+	                         <li class="rightAligned">Head<input type='checkbox' name='injuryLoc' value='Head'></li>
+	                         <li class="rightAligned">Face<input type='checkbox' name='injuryLoc' value='Face'></li>
+	                         <li class="rightAligned">Eye<input type='checkbox' name='injuryLoc' value='Eye'></li>
+	                         <li class="rightAligned">Nose<input type='checkbox' name='injuryLoc' value='Nose'></li>
+	                         <li class="rightAligned">Mouth<input type='checkbox' name='injuryLoc' value='Mouth'></li>
+	                         <li class="rightAligned">Teeth<input type='checkbox' name='injuryLoc' value='Teeth'></li>
+	                    </ul>
+	               </div>
+	               <div class="left_column">
+	                    <ul class="ulNoStyle">
+	                         <li class="rightAligned">
+	                              Other:<input type='checkbox' name='injuryLoc' value='Other'>
+	                              <input name='injuryLocOther' type='text' placeholder='Other'>
+	                         </li>
+	                    </ul>
+	               </div>
+	          </fieldset>
+	          <fieldset id='firstAid'>
+	               <legend>First Aid Rendered</legend>
+	               <textarea name='hillFirstAid' placeholder='On the hill' required></textarea>
+	               <textarea name='patrolRoomAid' placeholder='In the patrol room' required></textarea>
+	          </fieldset>
+	          <fieldset id='patrollers'>
+	               <legend>Patrollers</legend>
+	               <label for='scenePatrollers'>At Scene?</label>
+	               <span id='scenePatrollers'></span>
+	               <br>
+	               <label for='transportingPatrollers'>Transporting?</label>
+	               <span id='transportingPatrollers'></span>
+	               <br>
+	               <label for='aidRoomPatrollers'>First aid room?</label>
+	               <span id='aidRoomPatrollers'></span>
+	          </fieldset>
+	          <fieldset id='transportDestination'>
+	               <legend>Transport & Destination</legend>
+	               <label for='arrival'>How arrived patrol room?</label>
+	               Patrol/Toboggan<input type='radio' name='arrival' id='arrival' value='arrivePatrol' required>
+	               Walk-in<input type='radio' name='arrival' id='arrival' value='arriveWalk' required>
+	               Other:<input type='radio' name='arrival' id='arrival' value='arriveOther' required>
+	               <input name='arriveOther' id='arriveOther' type='text' placeholder='Other' class='mediumInput'>
+	               <br>
+	               <label for='leave'>How left patrol room?</label>
+	               Ambulance<input type='radio' name='leave' id='leave' value='leaveAmbulance' required>
+	               Car/Bus<input type='radio' name='leave' id='leave' value='leaveCar' required>
+	               Other:<input type='radio' name='leave' id='leave' value='leaveOther' required>
+	               <input name='leaveOther' id='leaveOther' type='text' placeholder='Other' class='mediumInput'>
+	               <br>
+	               <label for='dest'>Destination?</label>
+	               Home<input type='radio' name='dest' id='dest' value='destHome' required>
+	               Lodge<input type='radio' name='dest' id='dest' value='destLodge' required>
+	               Return Skiing<input type='radio' name='dest' id='dest' value='destSki' required>
+	               Medical Facility:<input type='radio' name='dest' id='dest' value='destFacility' required>
+	               <input name='destFacility' id='destFacility' type='text' placeholder='Medical Facility' class='mediumInput'>
+	          </fieldset>
+	          <fieldset id='witnesses'>
+	               <legend>Witnesses</legend>
+	          </fieldset>
+	          <fieldset id='completer'>
+	               <legend>Report Completion</legend>
+	               <label for='reportCompleter'>Report Completer</label>
+	               <span id='reportCompleter'></span>
+	               <label for='dateComplete'>Date Completed:</label>
+	               <input name='dateComplete' id='dateComplete' type='text' class='mediumInput'>
+	               <br>
+	               <input type='submit' id='completed' value='Completed!'>
+	               <input type='reset' id='reset' value='Reset Form'>
+	          </fieldset>
+	     </form>
+	     <!-- SCRIPTS -->
+	     <script src="scripts/modernizr.js"></script>
+	     <script src="scripts/jquery.js"></script>
+	     <script src="scripts/main.js"></script>
+	</body>
+</html>

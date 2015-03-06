@@ -1,0 +1,347 @@
+<!--
+     AUTHOR: hbates@northmen.org
+     VERSION: 01.04.2014.1.9
+     CREATED: 12.18.2012
+     PURPOSE: NNSP Results Page for printing
+-->
+
+<h1 id="masthead">Nub's Nob Incident Report</h1>
+<div id="headerInfo">
+     <span class="item">Day of Week: </span><span id="day" name="day" class="info"><% params.day %></span>
+     <span class="item">Date: </span><span id="date" name="date" class="info"><% params.date %></span>
+     <span id="time" class="item">Incident Time: </span><span class="info"><% params.incidentTime %></span>
+</div>
+
+<div id="personalInfo" class="container">
+     <div id="personalInfoTitle" class="legend">
+          <span class="title">INJURED PERSON</span>
+     </div>
+     <div id="personalInfoData" class="data">
+          <span class="item">Name: </span><span class="info"><% params.firstName %> <% params.lastName %></span>
+          <span class="item">Gender: </span><span class="info"><% params.gender %></span>
+          <span class="item">DOB: </span><span class="info"><% params.dob %></span>
+          <span class="item">Age: </span><span class="info"><% params.age %></span>
+          <span class="item">Height: </span><span class="info"><% params.height %></span>
+          <span class="item">Weight: </span><span class="info"><% params.weight %></span>
+          <br>
+          <span class="item">Address: </span><span class="info"> <% params.patientStreet %>; <% params.patientCity %>, <% params.patientState %> <% params.patientZip %> </span>
+          <br>
+          <% IF params.homePhoneNum %>
+               <span class="item">Home phone: </span><span class="info"><% params.homePhoneNum %></span>
+          <% END %>
+          <% IF params.cellPhoneNum %>
+               <span class="item">Cell phone: </span><span class="info"><% params.cellPhoneNum %></span>
+          <% END %>
+          <% IF params.email %>
+               <span class="item">Email: </span><span class="info"><% params.email %></span>
+          <% END %>
+          <br>
+          <span class="item">Occupation: </span><span class="info"><% params.occupation %></span>
+     </div>
+</div>
+
+<div id="patientHistory" class="container">
+     <div id="Title" class="legend">
+          <span class="title">PATIENT HISTORY</span>
+     </div>
+     <div id="patientHistoryData" class="data">
+          <span class="item"></span>
+          <span class="item">Prior Injury/Ilness: </span><span class="info"><% params.priorInjury %></span>
+          <span class="item">Year Injured: </span><span class="info"><% params.yearInjured %></span>
+               <% IF params.numTimesLoc == "today" %>
+                    <span class="item">Number of Times Today: </span>
+                    <span class="info"><% params.qtyTimesToday %></span>
+               <% ELSE %>
+                    <span class="item">Number Of Times Prior: </span>
+                    <span class="info"><% params.qtyTimes %></span>
+               <% END %>
+          <br>
+          <span class="item">Corrective Lenses: </span><span class="info"><% params.correctiveLenses %></span>
+          <span class="item">Worn: </span><span class="info"><% params.correctiveLensesWorn %></span>
+          <br>
+          <span class="item">Health Insurance: </span><span class="info"><% params.healthInsurance %></span>
+          <span class="item">Medications: </span><span class="info"><% params.meds %></span>
+          <span class="item">Allergies/Alerts: </span><span class="info"><% params.allergies %></span>
+          <br>
+          <span class="item">Ticket Type: </span><span class="info"><% params.ticketType %></span>
+          <span class="item">Group: </span><span class="info"><% params.group %></span>
+     </div>
+</div>
+
+<div id="equipment" class="container">
+     <div id="Title" class="legend">
+          <span class="title">EQUIPMENT</span>
+     </div>
+     <div id="equipmentData" class="data">
+          <span class="item">Equipment Type: </span><span class="info"><% params.equipmentType %><% params.otherEquipment %></span>
+          <span class="item">Owner: </span><span class="info"><% params.owner %></span>
+          <span class="item">Binding Make: </span><span class="info"><% params.bindingMake %></span>
+          <span class="item">Binding Model: </span><span class="info"><% params.bindingModel %></span>
+          <br>
+          <% IF params.owner == "areaRental" || params.owner == "demo" %>
+               <span class="item">If Rented, Shop Name: </span><span class="info"><% params.nubsName %>, <% params.nubsStreet %>, <% params.shopCity %>, <% params.shopState %>, <% params.nubsZip %> </span>
+               <br>
+               <span class="item">Ski/Board Number: </span><span class="info"><% params.skiNum %></span>
+               <span class="item">Boot Number: </span><span class="info"><% params.bootNum %></span>
+          <% ELSIF params.owner == "otherRental" %>
+               <span class="item">If Rented, Shop Name: </span><span class="info"><% params.shopName %>, <% params.shopStreet %>, <% params.shopCity %>, <% params.shopState %>, <% params.shopZip %> </span>
+               <br>
+               <span class="item">Ski/Board Number: </span><span class="info"><% params.skiNum %></span>
+               <span class="item">Boot Number: </span><span class="info"><% params.bootNum %></span>
+          <% END %>
+          <br>
+          <span class="item">Helmet Worn: </span><span class="info"><% params.helmet %></span>
+          <span class="item">Rental?: </span><span class="info"><% params.helmetRental %></span>
+     </div>
+</div>
+
+<div id="history" class="container">
+     <div id="Title" class="legend">
+          <span class="title">SKIING HISTORY</span>
+     </div>
+     <div id="historyData" class="data">
+          <span class="item">Ability: </span><span class="info"><% params.ability %></span>
+          <br>
+          <span class="item">In Lesson: </span><span class="info">
+               <% params.inLesson %> -
+               <% IF params.inLesson == 'Yes' %>
+                    Instructor name: <% params.instructor %>
+               <% END %>
+          </span>
+          <br>
+          <span class="item">Number of Times on?: </span><span class="info"><% params.numTimes %><% params.numOther %></span>
+          <br>
+          <span class="item">Equipment removed by: </span><span class="info"><% params.equipmentRemoval %></span>
+     </div>
+</div>
+
+<div id="locations" class="container">
+     <div id="locationTitle" class="legend">
+          <span class="title">LOCATION</span>
+     </div>
+     <div id="locationData" class="data">
+          <div id="whereInjured" class="innerDiv">
+               <% IF params.location == "onHill" %>
+                    <span class="item">On hill: </span><span class="info"><% params.hillName %></span>
+               <% ELSIF params.location == "lift" %>
+                    <span class="item">On lift: </span><span class="info"><% params.liftName %></span>
+               <% ELSE %>
+                    <span class="item">On Premise</span>
+               <% END %>
+          </div>
+          <div id="whereInjuredStuff" class="innerDiv">
+               <span class="item">Specific location: </span><span class="info" id="place"><% params.hill %><% params.lift %><% params.specificLocation %></span>
+               <br>
+               <% IF params.location == "onHill" %>
+                   <span class="item">Difficulty: </span><span class="info"><% params.difficulty %></span>
+               <% END %>
+          </div>
+     </div>
+</div>
+
+<div id="incidentDescription" class="container">
+     <div id="Title" class="legend">
+          <span class="title">INCIDENT DESCRIPTION</span>
+     </div>
+     <div id="incidentDescriptionData" class="data">
+          <span class="info"><% params.incidentDescription %></span>
+     </div>
+</div>
+
+<div id="injury" class="container">
+     <div id="Title" class="legend">
+          <span class="title">PROBABLE INJURY</span>
+     </div>
+     <div id="injuryData" class="data">
+          <span class="info">
+               <%FOREACH injury = params.injury %>
+                    <% injury %>;&nbsp;&nbsp;&nbsp;&nbsp;
+               <% END %>
+               <br>
+               <% IF params.injury == "other" %>
+                    <b>Other: </b><% params.injuryOther %>
+               <% END %>
+          </span>
+     </div>
+</div>
+
+<div id="injuryZone" class="container">
+     <div id="Title" class="legend">
+          <span class="title">INJURY ZONE</span>
+     </div>
+     <div id="injuryZoneData" class="data">
+          <% FOREACH item = params.injuryLoc %>
+               <% item %>;&nbsp;&nbsp;&nbsp;
+          <% END %>
+          <br>
+          <% IF params.injuryLoc == "other" %>
+               <b>Other: </b> <% params.injuryLocOther %>
+          <% END %>
+     </div>
+</div>
+
+<div id="firstAid" class="container">
+     <div id="Title" class="legend">
+          <span class="title">FIRST AID RENDERED</span>
+     </div>
+     <div id="firstAidData" class="data">
+          <% IF params.hillFirstAid %>
+               <span class="item">On the Hill: </span><span class="info"><% params.hillFirstAid %></span>
+          <% END %>
+          <br><br>
+          <% IF params.patrolRoomAid %>
+               <span class="item">In Patrol Room: </span><span class="info"><% params.patrolRoomAid %></span>
+          <% END %>
+     </div>
+</div>
+
+<div id="patrollers" class="container">
+     <div id="Title" class="legend">
+          <span class="title">PATROLLERS</span>
+     </div>
+     <div id="patrollersData" class="data">
+          <span class="item">At Scene: </span><span class="info">
+          <% IF params.scenePatrollersNames %>
+               <% FOREACH item = params.scenePatrollersNames %>
+                    <% item %>;&nbsp;&nbsp;&nbsp;&nbsp;
+               <% END %>
+          <% ELSE %>
+               N/A
+          <% END %>
+          </span>
+          <br>
+          <span class="item">Transporting: </span><span class="info">
+          <% IF params.transportingPatrollersNames %>
+               <% FOREACH item = params.transportingPatrollersNames %>
+                    <% item %>;&nbsp;&nbsp;&nbsp;&nbsp;
+               <% END %>
+          <% ELSE %>
+               N/A
+          <% END %>
+          </span>
+          <br>
+          <span class="item">Patrol Room: </span><span class="info">
+          <% IF params.aidRoomPatrollersNames %>
+               <% FOREACH item = params.aidRoomPatrollersNames %>
+                    <% item %>;&nbsp;&nbsp;&nbsp;&nbsp;
+               <% END %>
+          <% ELSE %>
+               N/A
+          <% END %>
+          </span>
+     </div>
+</div>
+
+<div id="transportDestination" class="container">
+     <div id="Title" class="legend">
+          <span class="title">TRANSPORT & DESTINATION</span>
+     </div>
+     <div id="transportDestinationData" class="data">
+          <span class="item">How Arrived Patrol Room: </span>
+          <span class="info">
+               <% IF params.arrival == 'arrivePatrol' %>
+                    Ski Patrol
+               <% ELSIF params.arrival == 'arriveWalk' %>
+                    Walk in
+               <% ELSE %>
+                    OTHER: <% params.arriveOther %>
+               <% END %>
+          </span>
+          <br>
+          <span class="item">How Left Patrol Room: </span>
+          <span class="info">
+               <% IF params.leave == 'leaveAmbulance' %>
+                    Ambulance
+               <% ELSIF params.leave == 'leaveCar' %>
+                    Car
+               <% ELSE %>
+                    OTHER: <% params.leaveOther %>
+               <% END %>
+          </span>
+          <br>
+          <span class="item">Destination: </span>
+          <span class="info">
+               <% IF params.dest == 'destHome' %>
+                    Home
+               <% ELSIF params.dest == 'destLodge' %>
+                    Lodge
+               <% ELSIF params.dest == 'destSki' %>
+                    Return Skiing
+               <% ELSE %>
+                    Facility: <% params.destFacility %>
+               <% END %>
+          </span>
+          <br>
+     </div>
+</div>
+
+<div id="conditions" class="container">
+     <div id="Title" class="legend">
+          <span class="title">SITE CONDITIONS</span>
+     </div>
+     <div id="conditionsData" class="data">
+          <span class="item">Surface at Scene: </span><span class="info"><% params.sceneSurface %>&nbsp;&nbsp;&nbsp;&nbsp;<% params.sceneSurfaceOther %></span><br>
+          <span class="item">Visibility: </span><span class="info"><% params.visibility %></span><br>
+          <span class="item">Temperature: </span><span class="info"><% params.temperature %></span><br>
+          <span class="item">Wind: </span><span class="info"><% params.wind %></span><br>
+     </div>
+</div>
+
+<div id="witnesses" class="container">
+     <div id="Title" class="legend">
+          <span class="title">WITNESSES</span>
+     </div>
+     <div id="witnessesData" class="data">
+          <% IF params.w0LastName %>
+               <span class="item">Witness 1: </span>
+               <span class="info"><% params.w0LastName %></span>
+               <span class="info"><% params.w0FirstName %></span>
+               <span class="info"><% params.w0Street %></span>
+               <span class="info"><% params.w0City %></span>
+               <span class="info"><% params.w0State %></span>
+               <span class="info"><% params.w0Zip %></span>
+               <span class="info"><% params.w0HomePhoneNum %></span>
+               <span class="info"><% params.w0CellPhoneNum %></span>
+          <% END %>
+          <br>
+          <% IF params.w1LastName %>
+               <span class="item">Witness 2: </span>
+               <span class="info"><% params.w1LastName %></span>
+               <span class="info"><% params.w1FirstName %></span>
+               <span class="info"><% params.w1Street %></span>
+               <span class="info"><% params.w1City %></span>
+               <span class="info"><% params.w1State %></span>
+               <span class="info"><% params.w1Zip %></span>
+               <span class="info"><% params.w1HomePhoneNum %></span>
+               <span class="info"><% params.w1CellPhoneNum %></span>
+          <% END %>
+          <br>
+          <% IF params.w2LName %>
+               <span class="item">Witness 3: </span>
+               <span class="info"><% params.w2LastName %></span>
+               <span class="info"><% params.w2FirstName %></span>
+               <span class="info"><% params.w2Street %></span>
+               <span class="info"><% params.w2City %></span>
+               <span class="info"><% params.w2State %></span>
+               <span class="info"><% params.w2Zip %></span>
+               <span class="info"><% params.w2HomePhoneNum %></span>
+               <span class="info"><% params.w2CellPhoneNum %></span>
+          <% END %>
+          <% IF !params.w2LastName && !params.w1LastName && !params.w0LastName %>
+               <span class="item">No Witnesses</span>
+          <% END %>
+     </div>
+</div>
+
+<div id="completer" class="container">
+     <span class="item">Report Completer Name:</span><span class="info"> <% params.reportCompleter0 %></span>
+     <span class="item">Date Report Completed:</span><span class="info"> <% params.dateComplete %></span>
+     <br>
+     <br>
+     <span class="item">Signature of Completer: ______________________________________________</span><span class="item" id='moveRight'>I REFUSE TREATMENT:_______</span>
+     <br>
+     <br>
+     <span class="info1">I affirm that the above information is accurate</span>
+     <br>
+     <span class="item">Signature of Injured (or guardian): ______________________________________________</span><span class="item" id='moveRight2'>Date:______/______/__________</span>
+</div>
