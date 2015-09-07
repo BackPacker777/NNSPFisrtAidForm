@@ -77,7 +77,7 @@ function createCityStateData() {
 }
 
 function populateCityState($zipCode) {
-     $zipCodeLower = $zipCode.toLowerCase();
+     var $zipCodeLower = $zipCode.toLowerCase();
      for (var $i = 0; $i < $cityStateData.length; $i++) {
           if ($zipCodeLower === $cityStateData[$i][0]) {
                $cityState[0] = $cityStateData[$i][1];
@@ -195,7 +195,7 @@ function loadHills() {
 
 function hillsChangeEvt(e) {
      var $hill = $(e.target).val();
-     var $hillText = $("select[name='whichHill'").find('option:selected').text();
+     var $hillText = $("select[name='whichHill']").find('option:selected').text();
      document.getElementById("hillName").value = $hillText;
      setDifficulty($hill);
 }
